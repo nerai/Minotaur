@@ -1,0 +1,8 @@
+board 0011100,0001100,1000000
+inst
+
+col blue 0 1 7 8
+col green 16 17 18 19
+
+fade east
+draw png
