@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0-windows7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PlatformTarget>x64</PlatformTarget>
+		<Platforms>x64</Platforms>
+		<LangVersion>preview</LangVersion>
+		<AssemblyName>Minotaur.Explainer.1</AssemblyName>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <None Remove="script.js" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Content Include="script.js">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Minotaur.Boards\Minotaur.Boards.csproj" />
+		<ProjectReference Include="..\Minotaur.Utils\Minotaur.Utils.csproj" />
+		<ProjectReference Include="..\Minotaur\Minotaur.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="default.css">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>
