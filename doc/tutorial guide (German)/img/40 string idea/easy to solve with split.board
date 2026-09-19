@@ -1,0 +1,9 @@
+board 000000,000000,010111,010001,000001,100111
+split 22 28
+inst
+
+col blue 22
+col green 28
+
+
+draw png

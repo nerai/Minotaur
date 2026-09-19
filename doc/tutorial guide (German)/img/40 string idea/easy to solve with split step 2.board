@@ -1,0 +1,10 @@
+board 000000,000000,010111,010001,000001,100111
+merge 8 14 20 21 22
+# merge 31 32 26 27 28
+merge 26 27 28
+inst
+
+col blue 8 14 20 21 22
+col green 26 27 28
+
+draw png

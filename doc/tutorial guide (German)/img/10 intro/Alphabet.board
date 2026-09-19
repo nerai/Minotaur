@@ -1,0 +1,83 @@
+sub F
+board 100,001,101
+merge all
+inst
+col red all
+draw png
+
+sub I
+board 0,0,0,0,0
+merge all
+inst
+col red all
+draw png
+
+sub L
+board 01,01,01,00
+merge all
+inst
+col red all
+draw png
+
+sub N
+board 10,10,00,01
+merge all
+inst
+col red all
+draw png
+
+sub P
+board 00,00,01
+merge all
+inst
+col red all
+draw png
+
+sub T
+board 000,101,101
+merge all
+inst
+col red all
+draw png
+
+sub U
+board 010,000
+merge all
+inst
+col red all
+draw png
+
+sub V
+board 110,110,000
+merge all
+inst
+col red all
+draw png
+
+sub W
+board 110,100,001
+merge all
+inst
+col red all
+draw png
+
+sub X
+board 101,000,101
+merge all
+inst
+col red all
+draw png
+
+sub Y
+board 10,00,10,10
+merge all
+inst
+col red all
+draw png
+
+sub Z
+board 001,101,100
+merge all
+inst
+col red all
+draw png

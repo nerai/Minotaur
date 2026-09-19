@@ -1,0 +1,30 @@
+\begin{scope}
+[
+yscale = -1,
+]
+{
+\definecolor{r255g255b255}{RGB}{255,255,255};
+\definecolor{r255g174b168}{RGB}{255,174,168};
+\definecolor{r0g0b0}{RGB}{0,0,0};
+\fill [fill = r255g255b255,] (0pt,0pt) rectangle +(42pt,82pt);
+\fill [fill = r0g0b0,] (20pt,0pt) rectangle +(22pt,22pt);
+\fill [fill = r0g0b0,] (20pt,20pt) rectangle +(22pt,22pt);
+\fill [fill = r0g0b0,] (0pt,40pt) rectangle +(22pt,22pt);
+\fill [fill = r0g0b0,] (20pt,40pt) rectangle +(22pt,22pt);
+\fill [fill = r0g0b0,] (0pt,60pt) rectangle +(22pt,22pt);
+\fill [fill = r255g174b168,] (26pt,19pt) rectangle +(10pt,4pt);
+\fill [fill = r255g174b168,] (26pt,39pt) rectangle +(10pt,4pt);
+\fill [fill = r255g174b168,] (19pt,46pt) rectangle +(4pt,10pt);
+\fill [fill = r255g174b168,] (6pt,59pt) rectangle +(10pt,4pt);
+\fill [fill = r255g174b168,] (22pt,2pt) rectangle +(18pt,18pt);
+\fill [fill = r255g174b168,] (22pt,22pt) rectangle +(18pt,18pt);
+\fill [fill = r255g174b168,] (2pt,42pt) rectangle +(18pt,18pt);
+\fill [fill = r255g174b168,] (22pt,42pt) rectangle +(18pt,18pt);
+\fill [fill = r255g174b168,] (2pt,62pt) rectangle +(18pt,18pt);
+\path (21pt,1pt) rectangle +(20pt,20pt) node [pos = .5] (cell1) {\begingroup\fontsize{19.2pt}{13.8pt}\selectfont\texttt{}\endgroup};
+\path (21pt,21pt) rectangle +(20pt,20pt) node [pos = .5] (cell3) {\begingroup\fontsize{19.2pt}{13.8pt}\selectfont\texttt{}\endgroup};
+\path (1pt,41pt) rectangle +(20pt,20pt) node [pos = .5] (cell4) {\begingroup\fontsize{19.2pt}{13.8pt}\selectfont\texttt{}\endgroup};
+\path (21pt,41pt) rectangle +(20pt,20pt) node [pos = .5] (cell5) {\begingroup\fontsize{19.2pt}{13.8pt}\selectfont\texttt{}\endgroup};
+\path (1pt,61pt) rectangle +(20pt,20pt) node [pos = .5] (cell6) {\begingroup\fontsize{19.2pt}{13.8pt}\selectfont\texttt{}\endgroup};
+};
+\end{scope}

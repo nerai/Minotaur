@@ -1,0 +1,9 @@
+board 101,101,000,000
+inst
+
+col green 1 4
+col blue 7
+cell 0 1
+
+fade south
+draw png

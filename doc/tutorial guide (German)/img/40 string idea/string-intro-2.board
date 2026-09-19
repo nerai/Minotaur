@@ -1,0 +1,21 @@
+board 00101,00000,01011
+# split 6 7
+merge 5 10
+merge 3 8 9
+inst
+
+cell 0 0
+cell 1 1
+cell 3 2
+cell 5 3
+cell 6 4
+cell 7 5
+cell 8 6
+cell 9 7
+cell 10 8
+cell 12 9
+
+col green 5 10
+col blue 3 8 9
+
+draw png

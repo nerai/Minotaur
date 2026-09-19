@@ -1,0 +1,9 @@
+board 0100,0000,0100
+inst
+
+col green 2 3 7 10 11
+col blue 6
+cell 1 1
+
+fade west
+draw png

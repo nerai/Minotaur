@@ -1,0 +1,15 @@
+board 000101,100001,001001,100000,100000,100110
+merge 0 1 2 7 8
+merge 12 13 19 25 31
+merge 15 21 20 26 32
+merge 4 10 9 16 22
+merge 27 28 29 23 35
+inst
+
+col blue 0 1 2 7 8
+col green 12 13 19 25 31
+col red 15 21 20 26 32
+col green 4 10 9 16 22
+col blue 27 28 29 23 35
+
+draw png

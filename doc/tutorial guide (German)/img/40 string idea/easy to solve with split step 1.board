@@ -1,0 +1,10 @@
+board 000000,000000,010111,010001,000001,100111
+merge 22 21
+merge 28 27
+split 22 28
+inst
+
+col blue 21 22
+col green 27 28
+
+draw png
