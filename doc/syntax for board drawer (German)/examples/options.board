@@ -1,0 +1,39 @@
+board 000000000000011,000000000000011,011101101111010,010000100001000,011101101111011,000000000000011,000000000000011
+
+merge 3,2 3,3
+merge 3,2 3,4
+merge 3,2 3,5
+
+merge 3,7 3,8
+merge 3,7 3,9
+merge 3,7 3,10
+
+merge 3,12 3,13
+merge 3,12 3,14
+merge 3,12 2,14
+
+inst
+
+cell 15 A
+cell 30 B
+cell 45 C
+cell 60 D
+cell 75 E
+
+col brown 15 30 45 60 75
+col red 47 48 49 50
+col red 52 53 54 55
+col red 57 58 59 44
+
+col green 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+col green 16 17 18 19 20 21 22 23 24 25 26 27 28 29
+col green 34 37 42
+
+col blue 64 67 72
+col blue 76 77 78 79 80 81 82 83 84 85 86 87
+col blue 90 91 92 93 94 95 96 97 98 99 100 101 102
+
+fade north
+fade south
+
+draw png

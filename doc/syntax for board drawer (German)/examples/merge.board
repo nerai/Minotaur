@@ -1,0 +1,24 @@
+
+board 000
+inst
+cell 0 A
+cell 1 B
+col green 0
+col blue 1
+col brown 2
+fade east
+name merge 1
+draw png
+
+
+
+
+board 000
+merge 0 1
+inst
+cell 0 A
+col green 0 1
+col brown 2
+fade east
+name merge 2
+draw png
