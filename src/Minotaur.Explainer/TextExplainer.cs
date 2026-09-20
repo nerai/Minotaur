@@ -97,6 +97,7 @@ public class TextExplainer<TGrid> where TGrid : ISolutionGrid
 					abspath,
 					(WormyNode) w.Node,
 					w.Ancestors ());
+				inst.AutoName = true;
 				inst.CreateHighlights (action);
 				inst.Draw ();
 			}
