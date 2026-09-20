@@ -274,6 +274,8 @@ The initial board (top left) is operated on (edges).
 Nodes with a single child are forced or deduced operations.
 Nodes with several children are branching the search.
 
+<img src="img/tree1.png">
+
 <img src="img/image14.png">
 
 <img src="img/image15.png">
