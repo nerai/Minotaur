@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Explain flat string, p=1, eNaN visits, e0.0 steps, 2</title>
+<style>
+
+.body {
+	font-family: sans-serif;
+}
+
+.Init {
+	font-family: monospace;
+}
+
+.steplist {
+	/*
+	display: flex;
+	flex-direction: column;
+	*/
+}
+
+.step {
+	/*
+	font-family: sans-serif;
+	*/
+	display: grid;
+	gap: 0.5em 0.5em;
+	margin: 1.5em;
+	place-items: start start;
+	grid-template-columns: min-content;
+	grid-template-rows: min-content min-content 1fr;
+}
+
+.step-img-container {
+	grid-row: 1 / span 3;
+	grid-column: 1;
+}
+
+.step-caption {
+	grid-row: 1;
+	grid-column: 2;
+}
+
+.step-ass {
+	grid-row: 2;
+	grid-column: 2;
+	list-style-position: inside;
+}
+
+.options-list {
+	list-style-position: inside;
+}
+
+.step-pre {
+	grid-row: 3;
+	grid-column: 2;
+}
+
+.pre {
+	display: inline-flex;
+	font-family: monospace;
+	white-space: pre;
+}
+
+@media print {
+	.step {
+		/*
+		border: 1px solid green;
+		*/
+		break-inside: avoid;
+		break-after: auto;
+	}
+	body {
+		column-count: 2;
+	}
+}
+
+</style>
+
+<body>
+<div class='steplist'>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000000.svg">
+</div><div class='step-caption'>	<span>Step 1,</span>	<span>branch <span class='pre'>Start</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000001.svg">
+</div><div class='step-caption'>	<span>Step 2,</span>	<span>branch <span class='pre'>Start</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 22.<br>It restricts [11], [17], [10], [4], [16].<br>This forces merging them into the new string [4,10,11,16,17]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000002.svg">
+</div><div class='step-caption'>	<span>Step 3,</span>	<span>branch <span class='pre'>M1</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000003.svg">
+</div><div class='step-caption'>	<span>Step 4,</span>	<span>branch <span class='pre'>M1</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 28.<br>It restricts [22], [28].<br>This forces merging them into the new string [22,28]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000004.svg">
+</div><div class='step-caption'>	<span>Step 5,</span>	<span>branch <span class='pre'>M2</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000005.svg">
+</div><div class='step-caption'>	<span>Step 6,</span>	<span>branch <span class='pre'>M2</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 27.<br>It restricts [34], [35], [22,28], [33].<br>This forces merging them into the new string [22,28,33,34,35]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000006.svg">
+</div><div class='step-caption'>	<span>Step 7,</span>	<span>branch <span class='pre'>M3</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000007.svg">
+</div><div class='step-caption'>	<span>Step 8,</span>	<span>branch <span class='pre'>M3</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 26.<br>It restricts [27], [26].<br>This forces merging them into the new string [26,27]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000008.svg">
+</div><div class='step-caption'>	<span>Step 9,</span>	<span>branch <span class='pre'>M4</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000009.svg">
+</div><div class='step-caption'>	<span>Step 10,</span>	<span>branch <span class='pre'>M4</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 25.<br>It restricts [31], [25].<br>This forces merging them into the new string [25,31]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000010.svg">
+</div><div class='step-caption'>	<span>Step 11,</span>	<span>branch <span class='pre'>M5</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000011.svg">
+</div><div class='step-caption'>	<span>Step 12,</span>	<span>branch <span class='pre'>M5</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a global bottleneck in cell 7.<br>It subdivides the boards. One area consists of [2], [8], [1], [0], [6].<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000012.svg">
+</div><div class='step-caption'>	<span>Step 13,</span>	<span>branch <span class='pre'>M6</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000013.svg">
+</div><div class='step-caption'>	<span>Step 14,</span>	<span>branch <span class='pre'>M6</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 7.<br>It restricts [1], [2], [0], [8], [6].<br>This forces merging them into the new string [0,1,2,6,8]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000014.svg">
+</div><div class='step-caption'>	<span>Step 15,</span>	<span>branch <span class='pre'>M7</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000015.svg">
+</div><div class='step-caption'>	<span>Step 16,</span>	<span>branch <span class='pre'>M7</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 19.<br>It restricts [7], [13], [19].<br>This forces merging them into the new string [7,13,19]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000016.svg">
+</div><div class='step-caption'>	<span>Step 17,</span>	<span>branch <span class='pre'>M8</span></span></div><div class='step-ass'></div><div class='step-pre'>String [20] has only 2 possible, mutually exclusive continuations:<br><list class='options-list'><li>[20] chooses [7,13,19]<li>[20] chooses [26,27]</list></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000017.svg">
+</div><div class='step-caption'>	<span>Step 18,</span>	<span>branch <span class='pre'>M8</span></span></div><div class='step-ass'></div><div class='step-pre'>Assume that [20] chooses [7,13,19]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000018.svg">
+</div><div class='step-caption'>	<span>Step 19,</span>	<span>branch <span class='pre'>M8-Fail/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[20] chooses [7,13,19]</list></div><div class='step-pre'>This board cannot be solved.<br>The following problem cannot be avoided:<br>Piece T will be duplicated.<br><br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000019.svg">
+</div><div class='step-caption'>	<span>Step 20,</span>	<span>branch <span class='pre'>M8</span></span></div><div class='step-ass'></div><div class='step-pre'>Backing up, only a single choice remains:<br>[20] chooses [26,27]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000020.svg">
+</div><div class='step-caption'>	<span>Step 21,</span>	<span>branch <span class='pre'>M9</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000021.svg">
+</div><div class='step-caption'>	<span>Step 22,</span>	<span>branch <span class='pre'>M9</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in string [25,31].<br>It restricts [18], [24], [7,13,19].<br>This forces merging them into the new string [7,13,18,19,24]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000022.svg">
+</div><div class='step-caption'>	<span>Step 23,</span>	<span>branch <span class='pre'>M10</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000023.svg">
+</div><div class='step-caption'>	<span>Step 24,</span>	<span>branch <span class='pre'>M10</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in string [20,26,27].<br>It restricts [25,31], [20,26,27].<br>This forces merging them into the new string [20,25,26,27,31]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000024.svg">
+</div><div class='step-caption'>	<span>Step 25,</span>	<span>branch <span class='pre'>M11</span></span></div><div class='step-ass'></div><div class='step-pre'>This board is solved.</div>
+</div>
+</div>

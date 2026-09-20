@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Explain flat string, p=1, eNaN visits, e3.0 steps, 2</title>
+<style>
+
+.body {
+	font-family: sans-serif;
+}
+
+.Init {
+	font-family: monospace;
+}
+
+.steplist {
+	/*
+	display: flex;
+	flex-direction: column;
+	*/
+}
+
+.step {
+	/*
+	font-family: sans-serif;
+	*/
+	display: grid;
+	gap: 0.5em 0.5em;
+	margin: 1.5em;
+	place-items: start start;
+	grid-template-columns: min-content;
+	grid-template-rows: min-content min-content 1fr;
+}
+
+.step-img-container {
+	grid-row: 1 / span 3;
+	grid-column: 1;
+}
+
+.step-caption {
+	grid-row: 1;
+	grid-column: 2;
+}
+
+.step-ass {
+	grid-row: 2;
+	grid-column: 2;
+	list-style-position: inside;
+}
+
+.options-list {
+	list-style-position: inside;
+}
+
+.step-pre {
+	grid-row: 3;
+	grid-column: 2;
+}
+
+.pre {
+	display: inline-flex;
+	font-family: monospace;
+	white-space: pre;
+}
+
+@media print {
+	.step {
+		/*
+		border: 1px solid green;
+		*/
+		break-inside: avoid;
+		break-after: auto;
+	}
+	body {
+		column-count: 2;
+	}
+}
+
+</style>
+
+<body>
+<div class='steplist'>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000000.svg">
+</div><div class='step-caption'>	<span>Step 1,</span>	<span>branch <span class='pre'>Start</span></span></div><div class='step-ass'></div><div class='step-pre'>It is not immediately clear if [22] is connected to [28].<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000001.svg">
+</div><div class='step-caption'>	<span>Step 2,</span>	<span>branch <span class='pre'>Start</span></span></div><div class='step-ass'></div><div class='step-pre'>Assume that they are connected.<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000002.svg">
+</div><div class='step-caption'>	<span>Step 3,</span>	<span>branch <span class='pre'>Start-Fail/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>It is not immediately clear if [21] is connected to [22,28].<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000003.svg">
+</div><div class='step-caption'>	<span>Step 4,</span>	<span>branch <span class='pre'>Start-Fail/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>Assume that they are not connected.<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000004.svg">
+</div><div class='step-caption'>	<span>Step 5,</span>	<span>branch <span class='pre'>Start-Fail/0-A/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000005.svg">
+</div><div class='step-caption'>	<span>Step 6,</span>	<span>branch <span class='pre'>Start-Fail/0-A/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>There is a bottleneck in cell 27.<br>It restricts [22,28], [27].<br>This forces merging them into the new string [22,27,28]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000006.svg">
+</div><div class='step-caption'>	<span>Step 7,</span>	<span>branch <span class='pre'>Start-Fail/0-A/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000007.svg">
+</div><div class='step-caption'>	<span>Step 8,</span>	<span>branch <span class='pre'>Start-Fail/0-A/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>There is a bottleneck in cell 26.<br>It restricts [22,27,28], [26].<br>This forces merging them into the new string [22,26,27,28]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000008.svg">
+</div><div class='step-caption'>	<span>Step 9,</span>	<span>branch <span class='pre'>Start-Fail/0-A/2</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000009.svg">
+</div><div class='step-caption'>	<span>Step 10,</span>	<span>branch <span class='pre'>Start-Fail/0-A/2</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>There is a bottleneck in cell 20.<br>It restricts [21], [20].<br>This forces merging them into the new string [20,21]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000010.svg">
+</div><div class='step-caption'>	<span>Step 11,</span>	<span>branch <span class='pre'>Start-Fail/0-A/3</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000011.svg">
+</div><div class='step-caption'>	<span>Step 12,</span>	<span>branch <span class='pre'>Start-Fail/0-A/3</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>There is a bottleneck in cell 8.<br>It restricts [20,21], [14], [8].<br>This forces merging them into the new string [8,14,20,21]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000012.svg">
+</div><div class='step-caption'>	<span>Step 13,</span>	<span>branch <span class='pre'>Start-Fail/0-A/4</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000013.svg">
+</div><div class='step-caption'>	<span>Step 14,</span>	<span>branch <span class='pre'>Start-Fail/0-A/4</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>There is a global bottleneck in cell 6.<br>It subdivides the boards. One area consists of [12], [18], [24], [25], [31], [22,26,27,28], [32].<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000014.svg">
+</div><div class='step-caption'>	<span>Step 15,</span>	<span>branch <span class='pre'>Start-Fail/0-A/5</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000015.svg">
+</div><div class='step-caption'>	<span>Step 16,</span>	<span>branch <span class='pre'>Start-Fail/0-A/5</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>There is a bottleneck in cell 25.<br>It restricts [12], [18], [24], [25].<br>This forces merging them into the new string [12,18,24,25]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000016.svg">
+</div><div class='step-caption'>	<span>Step 17,</span>	<span>branch <span class='pre'>Start-Fail/0-A/6</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000017.svg">
+</div><div class='step-caption'>	<span>Step 18,</span>	<span>branch <span class='pre'>Start-Fail/0-A/6</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>There is a bottleneck in cell 31.<br>It restricts [12,18,24,25], [31].<br>This forces merging them into the new string [12,18,24,25,31]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000018.svg">
+</div><div class='step-caption'>	<span>Step 19,</span>	<span>branch <span class='pre'>Start-Fail/0-A/7</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000019.svg">
+</div><div class='step-caption'>	<span>Step 20,</span>	<span>branch <span class='pre'>Start-Fail/0-A/7</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>There is a bottleneck in string [22,26,27,28].<br>It restricts [32], [22,26,27,28].<br>This forces merging them into the new string [22,26,27,28,32]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000020.svg">
+</div><div class='step-caption'>	<span>Step 21,</span>	<span>branch <span class='pre'>Start-Fail/0-A/8</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>String [8,14,20,21] has only 3 possible, mutually exclusive continuations:<br><list class='options-list'><li>[8,14,20,21] chooses [2]<li>[8,14,20,21] chooses [7]<li>[8,14,20,21] chooses [9]</list></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000021.svg">
+</div><div class='step-caption'>	<span>Step 22,</span>	<span>branch <span class='pre'>Start-Fail/0-A/8</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>Assume that [8,14,20,21] chooses [2]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000022.svg">
+</div><div class='step-caption'>	<span>Step 23,</span>	<span>branch <span class='pre'>Start-Fail/0-A/8-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28
+<li>[8,14,20,21] chooses [2]</list></div><div class='step-pre'>This board configuration cannot be solved: Closed subspace divisibility</div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000023.svg">
+</div><div class='step-caption'>	<span>Step 24,</span>	<span>branch <span class='pre'>Start-Fail/0-A/8</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>Assume that [8,14,20,21] chooses [7]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000024.svg">
+</div><div class='step-caption'>	<span>Step 25,</span>	<span>branch <span class='pre'>Start-Fail/0-A/8-C/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28
+<li>[8,14,20,21] chooses [7]</list></div><div class='step-pre'>This board configuration cannot be solved: Duplicate piece Z</div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000025.svg">
+</div><div class='step-caption'>	<span>Step 26,</span>	<span>branch <span class='pre'>Start-Fail/0-A/8</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>Assume that [8,14,20,21] chooses [9]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000026.svg">
+</div><div class='step-caption'>	<span>Step 27,</span>	<span>branch <span class='pre'>Start-Fail/0-A/8-A/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28
+<li>[8,14,20,21] chooses [9]</list></div><div class='step-pre'>This board cannot be solved.<br>The following problem cannot be avoided:<br>Piece P will be duplicated.<br><br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000027.svg">
+</div><div class='step-caption'>	<span>Step 28,</span>	<span>branch <span class='pre'>Start-Fail/0-A/8</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>21 is split from 22,28</list></div><div class='step-pre'>Backing up, this shows that all pathes that branch from this node lead to a dead end.</div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000028.svg">
+</div><div class='step-caption'>	<span>Step 29,</span>	<span>branch <span class='pre'>Start-Fail/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>Backing up, it is now established that it was wrong to assume that [21] and [22,28] are not connected.<br>Accordingly, the opposite is forced.<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000029.svg">
+</div><div class='step-caption'>	<span>Step 30,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>It is not immediately clear if [20] is connected to [21,22,28].<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000030.svg">
+</div><div class='step-caption'>	<span>Step 31,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>Assume that they are not connected.<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000031.svg">
+</div><div class='step-caption'>	<span>Step 32,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000032.svg">
+</div><div class='step-caption'>	<span>Step 33,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'>There is a bottleneck in cell 26.<br>It restricts [21,22,28], [27], [26].<br>This forces merging them into the new string [21,22,26,27,28]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000033.svg">
+</div><div class='step-caption'>	<span>Step 34,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000034.svg">
+</div><div class='step-caption'>	<span>Step 35,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'>There is a bottleneck in cell 12.<br>It restricts [25], [31], [24], [32], [18].<br>This forces merging them into the new string [18,24,25,31,32]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000035.svg">
+</div><div class='step-caption'>	<span>Step 36,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/2</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000036.svg">
+</div><div class='step-caption'>	<span>Step 37,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/2</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'>There is a bottleneck in cell 8.<br>It restricts [20], [14], [8].<br>This forces merging them into the new string [8,14,20]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000037.svg">
+</div><div class='step-caption'>	<span>Step 38,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/3</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000038.svg">
+</div><div class='step-caption'>	<span>Step 39,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/3</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'>There is a bottleneck in cell 6.<br>It restricts [12], [6].<br>This forces merging them into the new string [6,12]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000039.svg">
+</div><div class='step-caption'>	<span>Step 40,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'>It is not immediately clear if [6,12] is connected to [7].<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000040.svg">
+</div><div class='step-caption'>	<span>Step 41,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'>Assume that they are connected.<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000041.svg">
+</div><div class='step-caption'>	<span>Step 42,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28
+<li>[6,12] merges with [7]</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000042.svg">
+</div><div class='step-caption'>	<span>Step 43,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28
+<li>[6,12] merges with [7]</list></div><div class='step-pre'>There is a bottleneck in cell 2.<br>It restricts [6,7,12], [1], [0].<br>This forces merging them into the new string [0,1,6,7,12]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000043.svg">
+</div><div class='step-caption'>	<span>Step 44,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4-B/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28
+<li>[6,12] merges with [7]</list></div><div class='step-pre'>This board configuration cannot be solved: Duplicate piece P</div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000044.svg">
+</div><div class='step-caption'>	<span>Step 45,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'>Backing up, it is now established that it was wrong to assume that [6,12] and [7] are connected.<br>Accordingly, the opposite is forced.<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000045.svg">
+</div><div class='step-caption'>	<span>Step 46,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4-A/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000046.svg">
+</div><div class='step-caption'>	<span>Step 47,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4-A/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'>There is a bottleneck in cell 1.<br>It restricts [6,12], [0], [1].<br>This forces merging them into the new string [0,1,6,12]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000047.svg">
+</div><div class='step-caption'>	<span>Step 48,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4-A/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000048.svg">
+</div><div class='step-caption'>	<span>Step 49,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4-A/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'>There is a bottleneck in cell 2.<br>It restricts [0,1,6,12], [2].<br>This forces merging them into the new string [0,1,2,6,12]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000049.svg">
+</div><div class='step-caption'>	<span>Step 50,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4-A/2</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'>This board cannot be solved.<br>The following problem cannot be avoided:<br>Piece P will be duplicated.<br><br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000050.svg">
+</div><div class='step-caption'>	<span>Step 51,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-A/4</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>20 is split from 21,22,28</list></div><div class='step-pre'>Backing up, this shows that all pathes that branch from this node lead to a dead end.</div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000051.svg">
+</div><div class='step-caption'>	<span>Step 52,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>Backing up, it is now established that it was wrong to assume that [20] and [21,22,28] are not connected.<br>Accordingly, the opposite is forced.<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000052.svg">
+</div><div class='step-caption'>	<span>Step 53,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>String [14] has only 2 possible, mutually exclusive continuations:<br><list class='options-list'><li>[14] chooses [8]<li>[14] chooses [20,21,22,28]</list></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000053.svg">
+</div><div class='step-caption'>	<span>Step 54,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>Assume that [14] chooses [8]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000054.svg">
+</div><div class='step-caption'>	<span>Step 55,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [8]</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000055.svg">
+</div><div class='step-caption'>	<span>Step 56,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [8]</list></div><div class='step-pre'>There is a global bottleneck in cell 26.<br>It subdivides the boards. One area consists of [27], [20,21,22,28].<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000056.svg">
+</div><div class='step-caption'>	<span>Step 57,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-B/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [8]</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000057.svg">
+</div><div class='step-caption'>	<span>Step 58,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-B/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [8]</list></div><div class='step-pre'>There is a bottleneck in cell 18.<br>It restricts [26], [32], [25], [24], [31].<br>This forces merging them into the new string [24,25,26,31,32]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000058.svg">
+</div><div class='step-caption'>	<span>Step 59,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-B/2</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [8]</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000059.svg">
+</div><div class='step-caption'>	<span>Step 60,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-B/2</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [8]</list></div><div class='step-pre'>There is a bottleneck in string [20,21,22,28].<br>It restricts [27], [20,21,22,28].<br>This forces merging them into the new string [20,21,22,27,28]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000060.svg">
+</div><div class='step-caption'>	<span>Step 61,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-B/3</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [8]</list></div><div class='step-pre'>This board configuration cannot be solved: Duplicate piece P</div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000061.svg">
+</div><div class='step-caption'>	<span>Step 62,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>Assume that [14] chooses [20,21,22,28]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000062.svg">
+</div><div class='step-caption'>	<span>Step 63,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000063.svg">
+</div><div class='step-caption'>	<span>Step 64,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]</list></div><div class='step-pre'>There is a bottleneck in cell 24.<br>It restricts [32], [26], [31], [27], [25].<br>This forces merging them into the new string [25,26,27,31,32]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000064.svg">
+</div><div class='step-caption'>	<span>Step 65,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000065.svg">
+</div><div class='step-caption'>	<span>Step 66,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]</list></div><div class='step-pre'>There is a bottleneck in cell 6.<br>It restricts [18], [24], [12], [6].<br>This forces merging them into the new string [6,12,18,24]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000066.svg">
+</div><div class='step-caption'>	<span>Step 67,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/2</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]</list></div><div class='step-pre'>String [0] has only 2 possible, mutually exclusive continuations:<br><list class='options-list'><li>[0] chooses [6,12,18,24]<li>[0] chooses [1]</list></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000067.svg">
+</div><div class='step-caption'>	<span>Step 68,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/2</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]</list></div><div class='step-pre'>Assume that [0] chooses [6,12,18,24]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000068.svg">
+</div><div class='step-caption'>	<span>Step 69,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/2-A/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]
+<li>[0] chooses [6,12,18,24]</list></div><div class='step-pre'>This board configuration cannot be solved: Symmetric 10 cell subspace</div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000069.svg">
+</div><div class='step-caption'>	<span>Step 70,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/2</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]</list></div><div class='step-pre'>Assume that [0] chooses [1]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000070.svg">
+</div><div class='step-caption'>	<span>Step 71,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/2-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]
+<li>[0] chooses [1]</list></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000071.svg">
+</div><div class='step-caption'>	<span>Step 72,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/2-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]
+<li>[0] chooses [1]</list></div><div class='step-pre'>There is a bottleneck in cell 7.<br>It restricts [6,12,18,24], [7].<br>This forces merging them into the new string [6,7,12,18,24]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000072.svg">
+</div><div class='step-caption'>	<span>Step 73,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/2-B/1</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]
+<li>[0] chooses [1]</list></div><div class='step-pre'>This board cannot be solved.<br>The following problem cannot be avoided:<br>One of the pieces P, L will be duplicated.<br><br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000073.svg">
+</div><div class='step-caption'>	<span>Step 74,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0-A/2</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]
+<li>[14] chooses [20,21,22,28]</list></div><div class='step-pre'>Backing up, this shows that all pathes that branch from this node lead to a dead end.</div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000074.svg">
+</div><div class='step-caption'>	<span>Step 75,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>Backing up, this shows that all pathes that branch from this node lead to a dead end.</div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000075.svg">
+</div><div class='step-caption'>	<span>Step 76,</span>	<span>branch <span class='pre'>Start-Fail/0-B/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>Backing up, this shows that all pathes that branch from this node lead to a dead end.</div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000076.svg">
+</div><div class='step-caption'>	<span>Step 77,</span>	<span>branch <span class='pre'>Start-Fail/0</span></span></div><div class='step-ass'>Current assumptions:<list><li>[22] merges with [28]</list></div><div class='step-pre'>Backing up, this shows that all pathes that branch from this node lead to a dead end.</div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000077.svg">
+</div><div class='step-caption'>	<span>Step 78,</span>	<span>branch <span class='pre'>Start</span></span></div><div class='step-ass'></div><div class='step-pre'>Backing up, it is now established that it was wrong to assume that [22] and [28] are connected.<br>Accordingly, the opposite is forced.<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000078.svg">
+</div><div class='step-caption'>	<span>Step 79,</span>	<span>branch <span class='pre'>M1</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000079.svg">
+</div><div class='step-caption'>	<span>Step 80,</span>	<span>branch <span class='pre'>M1</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 21.<br>It restricts [22], [21].<br>This forces merging them into the new string [21,22]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000080.svg">
+</div><div class='step-caption'>	<span>Step 81,</span>	<span>branch <span class='pre'>M2</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000081.svg">
+</div><div class='step-caption'>	<span>Step 82,</span>	<span>branch <span class='pre'>M2</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 27.<br>It restricts [28], [27].<br>This forces merging them into the new string [27,28]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000082.svg">
+</div><div class='step-caption'>	<span>Step 83,</span>	<span>branch <span class='pre'>M3</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000083.svg">
+</div><div class='step-caption'>	<span>Step 84,</span>	<span>branch <span class='pre'>M3</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 26.<br>It restricts [27,28], [26].<br>This forces merging them into the new string [26,27,28]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000084.svg">
+</div><div class='step-caption'>	<span>Step 85,</span>	<span>branch <span class='pre'>M4</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000085.svg">
+</div><div class='step-caption'>	<span>Step 86,</span>	<span>branch <span class='pre'>M4</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 20.<br>It restricts [21,22], [20].<br>This forces merging them into the new string [20,21,22]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000086.svg">
+</div><div class='step-caption'>	<span>Step 87,</span>	<span>branch <span class='pre'>M5</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000087.svg">
+</div><div class='step-caption'>	<span>Step 88,</span>	<span>branch <span class='pre'>M5</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 8.<br>It restricts [20,21,22], [14], [8].<br>This forces merging them into the new string [8,14,20,21,22]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000088.svg">
+</div><div class='step-caption'>	<span>Step 89,</span>	<span>branch <span class='pre'>M6</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000089.svg">
+</div><div class='step-caption'>	<span>Step 90,</span>	<span>branch <span class='pre'>M6</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 3.<br>It restricts [11], [5], [10], [9], [4].<br>This forces merging them into the new string [4,5,9,10,11]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000090.svg">
+</div><div class='step-caption'>	<span>Step 91,</span>	<span>branch <span class='pre'>M7</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000091.svg">
+</div><div class='step-caption'>	<span>Step 92,</span>	<span>branch <span class='pre'>M7</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 6.<br>It restricts [3], [2], [1], [0], [7].<br>This forces merging them into the new string [0,1,2,3,7]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000092.svg">
+</div><div class='step-caption'>	<span>Step 93,</span>	<span>branch <span class='pre'>M8</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000093.svg">
+</div><div class='step-caption'>	<span>Step 94,</span>	<span>branch <span class='pre'>M8</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 25.<br>It restricts [12], [18], [6], [24], [25].<br>This forces merging them into the new string [6,12,18,24,25]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000094.svg">
+</div><div class='step-caption'>	<span>Step 95,</span>	<span>branch <span class='pre'>M9</span></span></div><div class='step-ass'></div><div class='step-pre'></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000095.svg">
+</div><div class='step-caption'>	<span>Step 96,</span>	<span>branch <span class='pre'>M9</span></span></div><div class='step-ass'></div><div class='step-pre'>There is a bottleneck in cell 31.<br>It restricts [26,27,28], [32], [31].<br>This forces merging them into the new string [26,27,28,31,32]<br></div>
+</div>
+<div class='step'>
+<div class='step-img-container'><img class='step-img' src="000096.svg">
+</div><div class='step-caption'>	<span>Step 97,</span>	<span>branch <span class='pre'>M10</span></span></div><div class='step-ass'></div><div class='step-pre'>This board is solved.</div>
+</div>
+</div>
