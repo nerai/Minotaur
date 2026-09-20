@@ -335,7 +335,9 @@ The general documentation is in the source code. I am sorry for the inconvenienc
 
 The board painter component can be controlled with scripts, described here: [link](doc/syntax%20for%20board%20drawer%20(German)) (German).
 It was used to create most board graphics on this page.
-It does not create solution trees, those are instead the responsibility of the Explainer component.
+It does not create solution trees.
+Those are instead the responsibility of the [Explainer component](src/Minotaur.Explainer/TreeExplainer.cs).
+The images on this page are based on the Tikz output variant.
 
 
 
