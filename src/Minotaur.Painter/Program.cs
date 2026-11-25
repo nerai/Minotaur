@@ -208,7 +208,7 @@ public class Program
 					case "merge":
 					case "split": {
 						var isMerge = split [0] == "merge";
-						split = split [1].Split (' ');
+						split = split [1].Split (' ', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries);
 
 						if (split [0] == "all") {
 							var allCells = tn.Grid.AllWorms
