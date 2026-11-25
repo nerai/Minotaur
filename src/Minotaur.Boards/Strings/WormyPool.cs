@@ -24,7 +24,7 @@ public sealed class WormyPool
 	private ulong _Destroyed = 0;
 	private ulong _Abandoned = 0;
 
-	public SaturatingCost EnabledBelowCost = new SaturatingCost (199ul); //xxx
+	public SaturatingCost EnabledBelowCost = new(199ul); //xxx
 
 	public bool PoolIsInUse => _Nodes.Count > 0;
 

@@ -14,7 +14,7 @@ namespace Minotaur.ExactCover;
 public class LinkedMatrixTreeNode
 {
 	public readonly LinkedMatrixTreeNode Parent;
-	public readonly List<LinkedMatrixTreeNode> Children = new List<LinkedMatrixTreeNode> ();
+	public readonly List<LinkedMatrixTreeNode> Children = new();
 	public readonly ColHead Pivot;
 	public readonly QLCell Option;
 

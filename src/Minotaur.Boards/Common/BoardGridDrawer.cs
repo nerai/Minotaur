@@ -19,8 +19,8 @@ namespace Minotaur.Boards.Common;
 
 public static class BoardGridDrawer
 {
-	private static ThreadLocal<Image> _ImageCellClosed = new ThreadLocal<Image> (() => Image.FromFile ("gfx/board_cell_closed3.png"));
-	private static ThreadLocal<Image> _ImageCellOpen = new ThreadLocal<Image> (() => Image.FromFile ("gfx/board_cell_open2.png"));
+	private static ThreadLocal<Image> _ImageCellClosed = new(() => Image.FromFile ("gfx/board_cell_closed3.png"));
+	private static ThreadLocal<Image> _ImageCellOpen = new(() => Image.FromFile ("gfx/board_cell_open2.png"));
 
 	public record class ExportParameters (
 		string Name,

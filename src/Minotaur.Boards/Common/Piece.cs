@@ -10,7 +10,7 @@ namespace Minotaur.Boards.Common;
 public class Piece
 {
 	public static readonly Piece [] AllPieces = new Piece [12];
-	public static readonly Dictionary<uint, Piece> PieceHashMap = new Dictionary<uint, Piece> ();
+	public static readonly Dictionary<uint, Piece> PieceHashMap = new();
 
 	static Piece ()
 	{

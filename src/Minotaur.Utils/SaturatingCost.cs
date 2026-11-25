@@ -19,8 +19,8 @@ public readonly record struct SaturatingCost : IComparable<SaturatingCost>
 {
 	private readonly UInt64 U;
 
-	public static readonly SaturatingCost Zero = new SaturatingCost (0);
-	public static readonly SaturatingCost Infinity = new SaturatingCost (UInt64.MaxValue);
+	public static readonly SaturatingCost Zero = new(0);
+	public static readonly SaturatingCost Infinity = new(UInt64.MaxValue);
 
 	public bool IsInfinity => U == UInt64.MaxValue;
 

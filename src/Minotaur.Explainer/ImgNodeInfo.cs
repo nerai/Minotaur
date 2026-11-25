@@ -10,10 +10,8 @@ public class ImgNodeInfo<TGrid> where TGrid : ISolutionGrid
 {
 	public readonly TreeNode<TGrid> Node;
 	public readonly int Y;
-	public readonly Dictionary<TreeAction<TGrid>, ImgNodeInfo<TGrid>> Children
-		= new Dictionary<TreeAction<TGrid>, ImgNodeInfo<TGrid>> ();
-	public readonly Dictionary<TreeAction<TGrid>, ImgNodeInfo<TGrid>> Parents
-		= new Dictionary<TreeAction<TGrid>, ImgNodeInfo<TGrid>> ();
+	public readonly Dictionary<TreeAction<TGrid>, ImgNodeInfo<TGrid>> Children = new ();
+	public readonly Dictionary<TreeAction<TGrid>, ImgNodeInfo<TGrid>> Parents = new ();
 
 	public string Name;
 

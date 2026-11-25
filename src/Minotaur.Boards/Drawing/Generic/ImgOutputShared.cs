@@ -12,12 +12,12 @@ namespace Minotaur.Boards.Drawing.Generic;
 
 public class ImgOutputShared
 {
-	public static readonly Font _Font_Pre8 = new Font ("Consolas", 8f, FontStyle.Regular);
-	public static readonly Font _Font_Pre9 = new Font ("Consolas", 9f, FontStyle.Regular);
-	public static readonly Font _Font_Pre12 = new Font ("Consolas", 12f, FontStyle.Regular);
-	public static readonly Font _Font_Pre14 = new Font ("Consolas", 14f, FontStyle.Regular);
-	public static readonly Font _Font_Pre16 = new Font ("Consolas", 16f, FontStyle.Regular);
-	public static readonly Font _Font_Pre20 = new Font ("Consolas", 20f, FontStyle.Regular);
-	public static readonly Font _Font_Pre30 = new Font ("Consolas", 30f, FontStyle.Regular);
+	public static readonly Font _Font_Pre8 = new("Consolas", 8f, FontStyle.Regular);
+	public static readonly Font _Font_Pre9 = new("Consolas", 9f, FontStyle.Regular);
+	public static readonly Font _Font_Pre12 = new("Consolas", 12f, FontStyle.Regular);
+	public static readonly Font _Font_Pre14 = new("Consolas", 14f, FontStyle.Regular);
+	public static readonly Font _Font_Pre16 = new("Consolas", 16f, FontStyle.Regular);
+	public static readonly Font _Font_Pre20 = new("Consolas", 20f, FontStyle.Regular);
+	public static readonly Font _Font_Pre30 = new("Consolas", 30f, FontStyle.Regular);
 	//public static readonly Font _Font_Pre = new Font ("Lucida Sans Unicode", 8f, FontStyle.Regular);
 }

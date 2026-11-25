@@ -22,7 +22,7 @@ public class LinkedMatrix
 	private readonly Stack<QLCell> _Pool;
 	private readonly ColHead _Root;
 
-	private readonly Stack<QLCell> _CurrentPath = new Stack<QLCell> ();
+	private readonly Stack<QLCell> _CurrentPath = new();
 	public IReadOnlyCollection<QLCell> CurrentPath => _CurrentPath;
 
 	/// <summary>

@@ -24,7 +24,7 @@ public class LinkedMatrixTreeCreator
 	/// </summary>
 	private UInt64 _Zobrist;
 
-	public readonly List<List<List<QLCell>>> Solutions = new List<List<List<QLCell>>> ();
+	public readonly List<List<List<QLCell>>> Solutions = new();
 
 	public int Steps { get; private set; } = 0;
 	public int StepsToFirst { get; private set; } = -1;

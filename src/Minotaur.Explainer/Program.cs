@@ -159,10 +159,10 @@ Board {index + 1}  |  Duration: ______
 		}
 
 		if (1111 == 111) {
-			AnalizeDance (boardId, dir);
+			AnalyzeDance (boardId, dir);
 		}
 		if (1111 == 1111) {
-			AnalizeWorm (boardId, name, dir);
+			AnalyzeWorm (boardId, name, dir);
 		}
 
 		sw.Stop ();
@@ -170,7 +170,7 @@ Board {index + 1}  |  Duration: ______
 		Console.WriteLine ($"Completed {dir} in {dt:0.0}s\n");
 	}
 
-	private static void AnalizeDance (string boardId, string dir)
+	private static void AnalyzeDance (string boardId, string dir)
 	{
 		var analyzePath = $"{dir}/analyze v{CurrentExplainerVersion} dance.txt";
 		if (File.Exists (analyzePath)) {
@@ -187,7 +187,7 @@ Board {index + 1}  |  Duration: ______
 		new TextExplainer<BoardGrid> (explainer, $"{dir}/flat dance");
 	}
 
-	private static void AnalizeWorm (string boardId, string name, string dir)
+	private static void AnalyzeWorm (string boardId, string name, string dir)
 	{
 		AbstractTreeNode.StorePruned = false;
 
