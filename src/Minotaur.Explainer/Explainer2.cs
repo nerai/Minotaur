@@ -160,8 +160,8 @@ public class Explainer2<TGrid> where TGrid : ISolutionGrid
 			int suffix = 0;
 			var split = pi.Name.LastIndexOf ("/");
 			if (split >= 0) {
-				prefix = pi.Name.Substring (0, split);
-				suffix = int.Parse (pi.Name.Substring (split + 1));
+				prefix = pi.Name[..split];
+				suffix = int.Parse (pi.Name[(split + 1)..]);
 			}
 
 			var ch = pi.Children.Values

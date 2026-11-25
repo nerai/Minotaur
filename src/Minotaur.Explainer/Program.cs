@@ -42,7 +42,7 @@ class Program
 		foreach (var f in src.ToList ()) {
 			var setName = Path.GetFileNameWithoutExtension (f);
 			var s = File.ReadAllText (f);
-			if (s.Count (c => c == '\t') == 0) {
+			if (!s.Any (c => c == '\t')) {
 				work.Add (new (setName, s));
 				continue;
 			}
@@ -103,7 +103,7 @@ class Program
 					tsv = tsv [..^1] + '\n';
 				}
 
-				string use (int index)
+				static string use (int index)
 				{
 					var largeInfo = $"""
 Board {index + 1}  |  Duration: ______
@@ -183,8 +183,8 @@ Board {index + 1}  |  Duration: ______
 		var treeDir = $"{dir}/soltree dance v{CurrentExplainerVersion} L";
 		var explainer = new Explainer2<BoardGrid> (treeRoot, treeDir);
 
-		new TreeExplainer<BoardGrid> (explainer, true, new ());
-		new TextExplainer<BoardGrid> (explainer, $"{dir}/flat dance");
+		_ = new TreeExplainer<BoardGrid> (explainer, true, new ());
+		_ = new TextExplainer<BoardGrid> (explainer, $"{dir}/flat dance");
 	}
 
 	private static void AnalyzeWorm (string boardId, string name, string dir)
@@ -226,8 +226,9 @@ Board {index + 1}  |  Duration: ______
 			foreach (var (maxVisits, steps) in items) {
 				MemoryPressure.Collect (true);
 
-				var wc = new WormyTreeCreator (true);
-				wc.PrintToConsole = true;
+				var wc = new WormyTreeCreator (true) {
+					PrintToConsole = true
+				};
 				var meta = new WormyTreeCreationMeta ();
 				//meta.Pool.EnabledBelowCost = 1000;
 				meta.Pool.EnabledBelowCost = 0;
@@ -272,9 +273,9 @@ Board {index + 1}  |  Duration: ______
 					cellColors [18] = Color.FromArgb (186, 132, 184);
 				}
 
-				new TreeExplainer<WormyBoardGrid> (explainer, true, cellColors);
+				_ = new TreeExplainer<WormyBoardGrid> (explainer, true, cellColors);
 				if (1111 == 1111) {
-					new TextExplainer<WormyBoardGrid> (explainer, $"{dir}/flat string, {e}");
+					_ = new TextExplainer<WormyBoardGrid> (explainer, $"{dir}/flat string, {e}");
 				}
 
 				if (cost < bestResult) {
