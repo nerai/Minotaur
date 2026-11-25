@@ -338,6 +338,6 @@ It was used to create most board graphics on this page.
 It does not create solution trees.
 Those are instead the responsibility of the [Explainer component](src/Minotaur.Explainer/TreeExplainer.cs).
 The images on this page are based on the Tikz output variant.
-
+[Here](doc/tikz%20tree%20example) is an example of how to include a tikz tree in latex.
 
 

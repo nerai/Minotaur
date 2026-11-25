@@ -1,0 +1,67 @@
+\documentclass[
+a4paper,
+]{article}
+
+\usepackage{fullpage}
+\usepackage{pslatex}
+
+\usepackage[
+dvipsnames,
+table,
+]{xcolor} % must be early
+
+\usepackage{tikz}
+\usetikzlibrary{
+arrows,
+automata,
+calc,
+graphs,
+graphdrawing,
+arrows.meta,
+decorations.pathmorphing,
+matrix,
+positioning,
+fit,
+}
+\usegdlibrary{
+layered,
+trees,
+}
+
+\usepackage{currfile}
+\usepackage{graphicx}
+\usepackage[space]{grffile}
+\usepackage{xsavebox}
+\usepackage{nicematrix}
+\usepackage[export]{adjustbox}
+\usepackage{calc}
+
+% Display of Pentomino strings
+\definecolor{strBack}{rgb}{0.90,0.90,0.90}
+\newlength{\strWidth}%
+\newcommand{\str}[2][strBack]%
+{%
+\texttt{%
+\setlength{\fboxsep}{1pt}%
+\settowidth{\strWidth}{#2}%
+\colorbox{#1}%
+{%
+\adjustbox{raise={0pt}{\height}{0pt}}{% Try to ignore depth (e.g. from commas or the letter y).
+\parbox[b][1.2pt+\fontcharht\font`X][b]{\strWidth}{\centering#2}%
+}}%
+}}
+
+
+\newcommand*{\strm}{\leavevmode\unskip{\str{+}}\ignorespaces}
+\newcommand*{\strs}{\leavevmode\unskip{\str{/}}\ignorespaces}
+\newcommand{\strf}{{\str{$\Rightarrow$}}}
+
+
+
+\begin{document}
+
+\adjustbox{width = \textwidth}{
+\input{tree/tree img=1 write=[,,].tex}
+}
+
+\end{document}
